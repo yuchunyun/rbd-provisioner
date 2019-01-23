@@ -1,16 +1,4 @@
-1：创建secret
-echo "$(ceph auth get-key client.k8s)"|base64
-cat << EOF >> ceph-secret.yaml 
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ceph-secret-k8s
-  namespace: default
-type: "kubernetes.io/rbd"
-data:
-  key: "QVFCWUdraGMvU2VwTHhBQXEvVTNqSmRnQytTbU4vUk43dnhmSXc9PQo="
-EOF
-
+1：创建secret(请根据自己的需要配置)
 kubectl apply -f ceph-secret.yaml 
 
 2：创建rbac和rbd-provisioner
